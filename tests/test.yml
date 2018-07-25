@@ -1,0 +1,5 @@
+---
+- name: Configure Red Hat Enterprise Linux 7.x
+  hosts: all
+  roles:
+    - role: ansible-role-rhel

@@ -1,0 +1,12 @@
+name: rhel7
+title: Red Hat Enterprise Linux 7.x
+maintainer: Hiroki KUNITAKE
+copyright: Hiroki KUNITAKE
+copyright_email: feuerwerk.des.winters@gmail.com
+license: Proprietary, All rights reserved
+summary: Verify that RHEL 7.x Server are configured
+version: 1.0.0
+supports:
+  - os-family: redhat
+depends: []
+inspec_version: "~> 2.1"

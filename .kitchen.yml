@@ -1,0 +1,35 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: ansible_push
+  playbook: tests/test.yml
+  ansible_config: tests/ansible.cfg
+  become: true
+  become_user: root
+  diff: true
+  verbose: v
+<% if ENV['TAGS'] %>
+  tags: [<%= ENV['TAGS'] %>]
+<% end %>
+<% if ENV['SKIP_TAGS'] %>
+  skip_tags: [<%= ENV['SKIP_TAGS'] %>]
+<% end %>
+<% if ENV['RAW_ARGS'] %>
+  raw_arguments: "<%= ENV['RAW_ARGS'] %>"
+<% end %>
+  require_chef_omnibus: false
+
+verifier:
+  name: inspec
+  inspec_tests:
+    - path: tests/integration/default
+
+platforms:
+  - name: rhel7
+    driver:
+      box: generic/rhel7
+
+suites:
+  - name: default
